@@ -90,3 +90,100 @@
   background-color: #ff4757; /* Changes color when you hover over it */
   color: white;
 }
+
+/* --- PORTFOLIO SECTION --- */
+.portfolio-section {
+  padding: 80px 50px;
+  background-color: #111; /* Dark theme like Inspiro Studio */
+  color: white;
+  text-align: center;
+}
+
+.portfolio-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* CSS Grid for automatic alignment */
+.portfolio-grid {
+  display: grid;
+  /* This automatically adjusts columns based on screen size (Mobile friendly!) */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; 
+}
+
+/* Individual Image Box */
+.portfolio-item {
+  position: relative;
+  overflow: hidden; /* Keeps the zoom effect inside the box */
+  border-radius: 8px; 
+  cursor: pointer;
+  aspect-ratio: 16 / 9; /* Gives it a cinematic video shape */
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease; /* Smooth image zoom speed */
+}
+
+/* The dark layer that appears when hovering */
+.item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Hide it by default */
+  opacity: 0; 
+  transition: opacity 0.4s ease;
+}
+
+/* Text inside the overlay */
+.item-overlay h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  transform: translateY(20px); /* Pushes text down slightly */
+  transition: transform 0.4s ease;
+}
+
+.item-overlay p {
+  font-size: 1rem;
+  color: #ccc;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+/* --- THE HOVER MAGIC --- */
+
+/* 1. Zoom the image */
+.portfolio-item:hover img {
+  transform: scale(1.1); 
+}
+
+/* 2. Show the dark overlay */
+.portfolio-item:hover .item-overlay {
+  opacity: 1; 
+}
+
+/* 3. Slide the text up into place */
+.portfolio-item:hover .item-overlay h3,
+.portfolio-item:hover .item-overlay p {
+  transform: translateY(0); 
+}
+
+/* Mobile Screen Adjustments */
+@media (max-width: 768px) {
+  .portfolio-section {
+    padding: 40px 20px; /* Smaller padding on phones */
+  }
+}
