@@ -13,6 +13,11 @@
   font-family: 'Arial', sans-serif;
 }
 
+/* Ensure a safe fallback background if the video doesn't load */
+body {
+  background-color: #000;
+}
+
 /* Navbar Styling */
 .navbar {
   position: fixed; /* Keeps it at the top */
@@ -34,36 +39,39 @@
 }
 
 /* Video Hero Section */
+/* Make hero at least one viewport tall so content sits over full-screen video */
 .video-hero {
   position: relative;
-  height: 400px; /* Changed from 100vh to 400px (adjust as needed) */
+  min-height: 100vh; /* full viewport height */
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px; /* Add space for fixed navbar */
+  /* removed margin-top so video can span under the fixed navbar */
 }
 
 /* The Background Video */
+/* Fixed so it covers the entire viewport and stays behind all content */
 .bg-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover; /* Ensures video covers the screen without stretching */
+  z-index: -1; /* behind everything */
+  pointer-events: none; /* don't capture clicks */
 }
 
 /* Dark overlay so text is readable */
+/* Keep this absolute in the hero to darken only the hero area (full viewport tall) */
 .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* match the viewport so overlay covers the video area */
   background: rgba(0, 0, 0, 0.5); /* 50% dark shadow */
   display: flex;
   flex-direction: column;
@@ -71,6 +79,7 @@
   justify-content: center;
   color: white;
   text-align: center;
+  z-index: 1; /* above the video but below the navbar (navbar z-index:100) */
 }
 
 /* Text and Button styling */
