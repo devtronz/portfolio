@@ -36,12 +36,13 @@
 /* Video Hero Section */
 .video-hero {
   position: relative;
-  height: 100vh; /* Takes up 100% of the screen height */
+  height: 400px; /* Changed from 100vh to 400px (adjust as needed) */
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 60px; /* Add space for fixed navbar */
 }
 
 /* The Background Video */
