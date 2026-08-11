@@ -1,3 +1,10 @@
+/* Reset and box-sizing to avoid unexpected widths */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Reset basic margins */
 * {
   margin: 0;
